@@ -9,7 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Jean Boussier']
   spec.email         = ['jean.boussier@gmail.com']
   spec.summary       = %q{Monkey patch thread_safe to make it faster in non thread safe applications}
-  spec.description   = %q{CAUTION: Use this gem at your own risk.}
+  spec.description   = %Q{CAUTION: Use this gem at your own risk. If you use gems that depends on the thread_safe gem,
+e.g. Rails, but your application is not doing any threading, then thread_hazardous can bring you a few performance
+improvements at the cost of making these dependencies non thread safe.}
   spec.homepage      = 'https://github.com/byroot/thread_hazardous'
   spec.license       = 'MIT'
 
