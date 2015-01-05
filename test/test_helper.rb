@@ -5,9 +5,10 @@ THREAD_SAFE_PATH = File.expand_path('../..', File.dirname(cache_path))
 
 require 'thread_hazardous'
 
-def run_thread_safe_gem_tests(suite, except: [])
+def run_thread_safe_gem_tests(suite, options = {})
   require "#{THREAD_SAFE_PATH}/test/#{suite}.rb"
 
+  except = options[:except] || []
   unless except.empty?
     class_name = suite.sub(/^[a-z\d]*/) { $&.capitalize }.gsub(/(?:_|(\/))([a-z\d]*)/i) { $2.capitalize }
     test_class = Object.const_get(class_name)
